@@ -7,6 +7,9 @@
   "devDependencies": {
     "prisma": "^5.14.0"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "exports": {
     "./client": "./src/index.ts"
   }
