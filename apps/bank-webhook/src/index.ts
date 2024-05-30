@@ -1,10 +1,13 @@
 import express from "express";
 import { z } from "zod";
-import db from "@repo/db/client"
+import db from "@repo/db/client";
 
 const app = express();
 
+app.use(express.json())
+
 app.post("/hdfcWebhook", async (req, res) => {
+
     const paymentInfoSchema = z.object({
         token: z.string(),
         userId: z.string(),
@@ -52,6 +55,11 @@ app.post("/hdfcWebhook", async (req, res) => {
                 }
             })
         ])
+
+        res.json({
+            message: "Captured"
+        })
+
     } catch (e) {
         console.error(e);
         res.status(411).json({
